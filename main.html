@@ -1,16 +1,47 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box Center</title>
+  <style>
+    /* Ensures the body takes up the full viewport height */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
 
+    .box {
+      /* Step 1: Set size and appearance */
+      width: 200px;
+      height: 200px;
+      background-color: lightblue;
+      border: 2px solid black;
+
+      /* Step 2: Establish a positioning context for child elements */
+      position: relative;
+    }
+
+    .centered-content {
+      /* Step 3: Position the content */
+      position: absolute; /* Position relative to the nearest positioned ancestor (.box) */
+      top: 50%;         /* Move the top edge to the vertical center */
+      left: 50%;        /* Move the left edge to the horizontal center */
+
+      /* Step 4: Use transform to shift the element by half of its own size */
+      /* This pulls it back into the true center. */
+      transform: translate(-50%, -50%);
+
+      /* Step 5: Style the text */
+      color: purple;
+    }
+  </style>
+</head>
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+
+  <div class="box centered-content">
+    <p>This is center.</p>
+  </div>
 
 </body>
-
 </html>
