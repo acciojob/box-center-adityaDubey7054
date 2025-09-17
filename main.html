@@ -1,47 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Box Center</title>
-  <style>
-    /* Ensures the body takes up the full viewport height */
-    html, body {
-      height: 100%;
-      margin: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Center</title>
+    <style>
+        /* Ensures the body takes up the full viewport height */
+        body {
+            height: 100vh;
+            margin: 0;
+            position: relative; /* Establishes a positioning context for the box */
+        }
 
-    .box {
-      /* Step 1: Set size and appearance */
-      width: 200px;
-      height: 200px;
-      background-color: lightblue;
-      border: 2px solid black;
+        /* The main box styling and positioning */
+        .box {
+            /* Required Appearance */
+            height: 200px;
+            width: 200px;
+            background-color: lightblue;
+            border: 2px solid black;
+            
+            /* Required Positioning */
+            position: absolute; /* Positions the box relative to the nearest positioned ancestor (the body) */
+            top: 50%; /* Moves the top edge of the box to the vertical center of the page */
+            left: 50%; /* Moves the left edge of the box to the horizontal center of the page */
+            
+            /* Shifts the box back by half of its own width and height to achieve perfect centering */
+            transform: translate(-50%, -50%);
+        }
 
-      /* Step 2: Establish a positioning context for child elements */
-      position: relative;
-    }
+        /* Styling and positioning for the text inside the box */
+        .box p {
+            margin: 0; /* Removes default paragraph margin */
+            color: purple; /* Required text color */
+            
+            /* Required Positioning for the text */
+            position: absolute; /* Positions the text relative to its parent (the .box div) */
+            top: 50%; /* Moves the top edge of the text to the vertical center of the box */
+            left: 50%; /* Moves the left edge of the text to the horizontal center of the box */
+            
+            /* Shifts the text back to perfectly center it within the box */
+            transform: translate(-50%, -50%);
 
-    .centered-content {
-      /* Step 3: Position the content */
-      position: absolute; /* Position relative to the nearest positioned ancestor (.box) */
-      top: 50%;         /* Move the top edge to the vertical center */
-      left: 50%;        /* Move the left edge to the horizontal center */
-
-      /* Step 4: Use transform to shift the element by half of its own size */
-      /* This pulls it back into the true center. */
-      transform: translate(-50%, -50%);
-
-      /* Step 5: Style the text */
-      color: purple;
-    }
-  </style>
+            /* Prevents text from wrapping if the box is resized */
+            white-space: nowrap;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="box centered-content">
-    <p>This is center.</p>
-  </div>
+    <div class="box">
+        <p>This is center.</p>
+    </div>
 
 </body>
 </html>
